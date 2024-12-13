@@ -70,7 +70,7 @@ export default function App() {
 
     try {
       const response = await axios.post(
-        "http://192.168.1.3:5000/process/image",
+        "https://sampann-open.thefirstimpression.ai/process/image",
         {
           image: base64,
         }
