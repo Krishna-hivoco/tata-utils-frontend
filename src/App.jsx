@@ -16,8 +16,8 @@ export default function App() {
     if (files.length > 0 && files[0].type.startsWith("image/")) {
       const file = files[0];
 
-      if (file.size > 5 * 1024 * 1024) {
-        setError("File size must be less than 5MB.");
+      if (file.size > 10 * 1024 * 1024) {
+        setError("File size must be less than 10MB.");
         return;
       }
 
@@ -38,8 +38,8 @@ export default function App() {
     const file = event.target.files[0];
 
     if (file && file.type.startsWith("image/")) {
-      if (file.size > 5 * 1024 * 1024) {
-        setError("File size must be less than 5MB.");
+      if (file.size > 10 * 1024 * 1024) {
+        setError("File size must be less than 10MB.");
         return;
       }
 
@@ -101,7 +101,7 @@ export default function App() {
             <br />
             {error && (
               <small className=" text-xs text-red-600 ">
-                File size must be less than 5MB.
+                File size must be less than 10MB.
               </small>
             )}
           </div>
@@ -113,14 +113,25 @@ export default function App() {
             />
           )}
           {preview ? (
-            <button
-              onClick={() => handleClick()}
-              className={`${
-                loading && "hidden"
-              } font-semibold text-sm uppercase px-9 tracking-wider py-5 bg-black rounded-xl text-white mt-14`}
-            >
-              Send File
-            </button>
+            <>
+              <button
+                onClick={() => handleClick()}
+                className={`${
+                  loading && "hidden"
+                } font-semibold text-sm uppercase px-9 tracking-wider py-5 bg-black rounded-xl text-white mt-14`}
+              >
+                Send File
+              </button>
+              <span
+                onClick={() => {
+                  setPreview(null);
+                  setBase64(null);
+                }}
+                className="cursor-pointer underline text-sm font-medium mt-4"
+              >
+                Upload new file
+              </span>
+            </>
           ) : (
             <button
               onClick={triggerFileUpload}
