@@ -67,7 +67,7 @@ export default function App() {
 
     try {
       const response = await axios.post(
-        "https://backend.hivoco.com/process/image",
+        "https://sampann-open.thefirstimpression.ai/process/image",
         // "http://192.168.1.3:8509/process/image",
         formData,
         {
